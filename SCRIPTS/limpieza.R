@@ -5,7 +5,7 @@ library(here)
 
 #PRUEBA DE VINCULACIÓN CON GITHUB 
 
-base <- read_xlsx(here("DATA", "Datos_petroleo.xlsx"))
+base <- read_xlsx(here("DATA", "Data_raw.xlsx"))
 
 # convertir a data frame 
 base <- as.data.frame(base)
@@ -36,3 +36,12 @@ base_nueva <- base_t |>
 head(base_nueva)
 
 count_gaps(base_nueva)
+
+base_completa <- base_nueva |>
+  fill_gaps() |>
+  fill(precio_cierre, apertura, maximo, minimo, .direction = "down")
+
+write_csv(
+  base_completa,
+  here("DATA", "Data.csv")
+)
