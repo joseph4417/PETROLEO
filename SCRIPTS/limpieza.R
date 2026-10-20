@@ -3,8 +3,8 @@ library(fpp3)
 library(tidyverse)
 library(here)
 
-#PRUEBA DE VINCULACIÓN CON GITHUB 
 
+#Prueba de vinculación con GitHub 
 base <- read_xlsx(here("DATA", "Data_raw.xlsx"))
 
 # convertir a data frame 
