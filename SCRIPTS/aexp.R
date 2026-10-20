@@ -5,7 +5,7 @@ library(here)
 
 #cargamos los datos a partir de la carpeta DATA del repositorio
 datos <- read_csv(
-  here("DATA", "Data.csv"),
+  here("DATA", "Data.csv"),         #no me funka el here
   show_col_types = FALSE
 ) |>
   mutate(fecha = ymd(fecha)) |>
@@ -114,3 +114,5 @@ petroleo |>
     color = "Variable"
   ) +
   theme_minimal()
+
+#Haz bien tu script
