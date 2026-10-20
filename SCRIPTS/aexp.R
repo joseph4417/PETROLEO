@@ -4,7 +4,8 @@ library(tidyverse)
 library(here)
 
 #cargamos los datos a partir de la carpeta DATA del repositorio
-datos <- read_csv("DATA/Data.csv",
+datos <- read_csv(
+  here("DATA", "Data.csv"),
   show_col_types = FALSE
 ) |>
   mutate(fecha = ymd(fecha)) |>
