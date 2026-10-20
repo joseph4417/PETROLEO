@@ -1,10 +1,10 @@
-
 library(fpp3)
 library(tidyverse)
 library(here)
 
 #cargamos los datos a partir de la carpeta DATA del repositorio
-datos <- read_csv("DATA/Data.csv",
+datos <- read_csv(
+  here("DATA", "Data.csv"),        
   show_col_types = FALSE
 ) |>
   mutate(fecha = ymd(fecha)) |>
@@ -32,11 +32,16 @@ autoplot(petroleo, precio_cierre) +
   ) +
   theme_minimal()
 
-
+#Revisado por:  Javi Javier 
+#Estacionalidad: No, la fecha no influye en el valor
+#Tendencia: Si, al parecer desde 2026 se observa una tendencia al alza
+#Ciclo: No
+#Estacionaridad:No, Tanto la esperanza como la varianza no se observan constantes
 
 # Grafica estacional:comportamiento dentro de cada semana
 # cada linea representa una semana de observaciones
 # pregunta  para quien me revise: ¿Por qué crees que los sabados y domingos no varían las series? 
+#me atrevería a especular que es por que estan cerrados los mercados
 gg_season(
   petroleo,
   precio_cierre,
@@ -48,6 +53,11 @@ gg_season(
     y = "Precio de cierre"
   ) +
   theme_minimal()
+#Revisado por:  Javi Javier 
+#Estacionalidad:Si, los fines de semana se mantienen constantes pero como se toman los datos
+#Tendencia: No, en esta grafica no es adecuado buscar tendencia
+#Ciclo: No, no se observan ciclos
+#Estacionaridad:No, tanto la esperanza como la varianza no se aprecian constantes
 
 
 # Gráfica mensual: ultimo precio de cierre de cada mes
@@ -67,6 +77,12 @@ autoplot(petroleo_mensual, precio_cierre) +
   ) +
   theme_minimal()
 
+#Revisado por:  Javi Javier 
+#Estacionalidad:No
+#Tendencia: Si, en general una tendencia al alza
+#Ciclo: No, no se observan ciclos
+#Estacionaridad:No, tanto la esperanza como la varianza no se aprecian constantes
+
 # Grafica estacional: comportamiento dentro de cada año
 # aquí graficamos una serie de tiempo por cada año
 gg_season(
@@ -80,7 +96,11 @@ gg_season(
     y = "Precio de cierre"
   ) +
   theme_minimal()
-
+#Revisado por:  Javi Javier 
+#Estacionalidad:No, la relación con el mes no existe
+#Tendencia: No, en esta grafica no es adecuado buscar tendencia
+#Ciclo: No, no se observan ciclos
+#Estacionaridad:No, tanto la esperanza como la varianza no se aprecian constantes
 
 # Gráficas de las subseries por mes 
 # aquí en cada mes se tiene una subserie que representa el comportamiento del precio de cierre en ese mes a 
@@ -93,7 +113,11 @@ gg_subseries(petroleo_mensual, precio_cierre) +
   ) +
   theme_minimal()
 
-
+#Revisado por:  Javi Javier 
+#Estacionalidad:No, los meses no presentan una estacionalidad
+#Tendencia: No, en esta grafica no es adecuado buscar tendencia
+#Ciclo: No, no se observan ciclos
+#Estacionaridad:No, tanto la esperanza como la varianza no se aprecian constantes
 
 # Comparacion del precio de cierre con apertura, máximo y mínimo
 # caquí graficamos una serie de tiempo para cada una de las variables disponibles en la base de datos. 
@@ -113,3 +137,14 @@ petroleo |>
     color = "Variable"
   ) +
   theme_minimal()
+
+#Revisado por:  Javi Javier 
+## las variables que se observan tienen relacion directa con el precio de cierre
+# y esta grafica ya se reviso al inicio
+#Estacionalidad: No, la fecha no influye en el valor
+#Tendencia: Si, al parecer desde 2026 se observa una tendencia al alza
+#Ciclo: No
+#Estacionaridad:No, Tanto la esperanza como la varianza no se observan constantes
+
+
+#Haz bien tu script
