@@ -147,4 +147,7 @@ petroleo |>
 #Estacionaridad:No, Tanto la esperanza como la varianza no se observan constantes
 
 
-#Haz bien tu script
+petroleo |> ACF(precio_cierre) |> autoplot() + labs(x = "fecha", y = "Precio de cierre", title = "Autocorrelación")
+
+
+#TENDENCIA Y ESTACIONALIDAD EN GRAFICOS ACF
