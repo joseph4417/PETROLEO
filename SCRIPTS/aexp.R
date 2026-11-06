@@ -148,6 +148,3 @@ petroleo |>
 
 
 petroleo |> ACF(precio_cierre) |> autoplot() + labs(x = "fecha", y = "Precio de cierre", title = "Autocorrelación")
-
-
-#TENDENCIA Y ESTACIONALIDAD EN GRAFICOS ACF
