@@ -68,4 +68,4 @@ restante <- comp_estacional |>
 
 autoplot(restante, Rt) + labs(x= "Fecha", y = "Residuo (R_t)", title = "Componente Resto (Ruido) del precio del petróleo")
 
-
+#revisado: parece estar todo bien
